@@ -15,6 +15,7 @@ import { Popover } from 'primeng/popover';
 import { PopoverModule } from 'primeng/popover';
 import { OverlayModule } from 'primeng/overlay';
 
+
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -23,25 +24,38 @@ import { OverlayModule } from 'primeng/overlay';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
+
+
 export class NavbarComponent {
 
   items: MenuItem[] | undefined;
   currentDate: Date = new Date();
   @ViewChild('op') op!: Popover;
   @ViewChild('op2') op2!: Popover;
+  display = '0';
+  firstValue: number | null = null;
+  action: string | null = null;
   notifications = [
     { name: 'Amy Elsner', image: 'amyelsner.png', email: 'amy@email.com', role: 'Owner' },
     { name: 'Bernardo Dominic', image: 'bernardodominic.png', email: 'bernardo@email.com', role: 'Editor' },
     { name: 'Ioni Bowcher', image: 'ionibowcher.png', email: 'ioni@email.com', role: 'Viewer' },
   ];
-  display = '0';
-  firstValue: number | null = null;
-  action: string | null = null;
+
 
   constructor(public _sharedDataService: SharedDataService) { }
 
   ngOnInit() {
-    this.profileDropDown()
+    this.profileDropDown();
+  }
+
+  toggle(event: any) {
+    this.op.toggle(event);
+    this.op2.hide();
+  }
+  
+  toggle2(event: any) {
+    this.op2.toggle(event);
+    this.op.hide();
   }
 
   profileDropDown() {
@@ -87,7 +101,7 @@ export class NavbarComponent {
   }
 
   acBtn() {
-    this.display = '0'
+    this.display = '0';
   }
 
   calculate() {
@@ -116,18 +130,8 @@ export class NavbarComponent {
       default:
         return;
     }
-
     this.firstValue = result;
     this.display = result.toString();
-  }
-
-  toggle(event: any) {
-    this.op.toggle(event);
-    this.op2.hide();
-  }
-  toggle2(event: any) {
-    this.op2.toggle(event);
-    this.op.hide();
   }
 
 }

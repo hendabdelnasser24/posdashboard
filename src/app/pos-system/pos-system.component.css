@@ -20,13 +20,16 @@
     min-width: 104px;
     border: 3px solid var(--light-color);
     border-radius: 12px;
+
     .infoText {
       color: var(--first-color);
     }
+
     h4 {
       font-size: 13px;
       margin-bottom: 4px;
     }
+
     h6 {
       font-size: 9px;
       margin-bottom: 0;
@@ -51,14 +54,17 @@
 ::ng-deep .p-confirmpopup {
   box-shadow: none !important;
 }
+
 .customs {
   background-color: white;
   height: 140px;
   border-radius: 20px;
 }
+
 .customs ::ng-deep .p-inputgroup input {
   width: 100% !important;
 }
+
 .customs ::ng-deep .p-select-clear-icon {
   transform: translateY(-50%);
 }
@@ -68,9 +74,11 @@
   height: calc(100vh - 262px);
   border-radius: 20px;
 }
+
 .invoiceArea {
   height: calc(100vh - 360px);
 }
+
 .workerDetails {
   background-color: white;
   height: 140px;
@@ -88,12 +96,14 @@
   height: calc(100vh - 418px);
   border-radius: 20px;
 }
+
 .AddBtn ::ng-deep .p-button {
   background-color: var(--blue-color) !important ;
   border: none !important;
   height: 45px !important;
   width: 120px !important;
 }
+
 .AddBtn ::ng-deep span {
   position: relative;
 }
@@ -102,32 +112,39 @@
   background: var(--key-input-background-color) !important;
   border: none !important;
 }
+
 .applyBtn ::ng-deep .p-button span {
   color: var(--light-font-color);
 }
+
 .totalTable td {
   font-size: 20px;
   font-weight: 400;
   color: var(--dark-font-color);
   padding: 12px 8px;
 }
+
 .totalTable tr {
   border-bottom: 1px solid var(--light-color);
 }
+
 .totalTable tr:last-child td {
   font-weight: 800;
   font-size: 22px;
   text-transform: uppercase;
   border: none;
 }
+
 @media (max-width: 1200px) {
-  .categories ul{
+  .categories ul {
     justify-content: center;
   }
+
   .secondSide {
     margin-top: 16px;
     margin-bottom: 16px;
   }
+
   .customs,
   .totalCard {
     height: auto;
@@ -142,12 +159,14 @@
 }
 
 @media (max-width: 992px) {
-  .categories ul{
+  .categories ul {
     justify-content: space-evenly;
   }
+
   .invoicePart {
     flex-direction: column;
   }
+
   .workerDetails {
     margin-top: 16px;
   }

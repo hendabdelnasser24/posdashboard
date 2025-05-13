@@ -5,13 +5,13 @@
     </div>
     <div class="date d-flex align-items-center justify-content-center ">
       <h6 class="me-2"> {{ currentDate | date:'d MMM yyyy' }} </h6>
-      <img src="/assets/date-icon.svg" alt="">
+      <img src="assets/date-icon.svg" alt="">
     </div>
     <div class="leftUl d-flex align-items-center ">
       <ul class="  d-flex align-items-center gap-md-4 gap-sm-3">
-        <li class="d-none d-md-block">
+        <li class="calculator d-none d-md-block">
           <button class="d-flex flex-column align-items-center px-0" (click)="toggle($event)">
-            <img src="/assets/calc.svg" alt="">
+            <img src="assets/calc.svg" alt="">
             <h6>Calculator</h6>
           </button>
           <p-popover #op styleClass="w-16rem">
@@ -43,12 +43,12 @@
           </p-popover>
         </li>
         <li><a href="#">
-            <img src="/assets/attend.svg" alt="">
+            <img src="assets/attend.svg" alt="">
             <h6>Attendance</h6>
           </a>
         </li>
         <li><a routerLink="pos">
-            <img src="/assets/pos.svg" alt="">
+            <img src="assets/pos.svg" alt="">
             <h6>POS</h6>
           </a>
         </li>
@@ -70,10 +70,10 @@
           </p-avatar-group>
         </div>
       </li>
-      <li><button><img src="/assets/messages.svg" alt=""></button></li>
-      <li class="notifys">
+      <li><button><img src="assets/messages.svg" alt=""></button></li>
+      <li>
         <button class="position-relative" (click)="toggle2($event)">
-          <img src="/assets/Item.svg" alt="">
+          <img src="assets/Item.svg" alt="">
           <p-badge value="2" severity="danger" badgeSize="small" class="position-absolute" />
         </button>
         <p-popover #op2 styleClass="w-full max-w-16rem">
@@ -94,8 +94,8 @@
           </div>
         </p-popover>
       </li>
-      <li class="d-none d-md-block"><button><img src="/assets/bucket.svg" alt=""></button></li>
-      <li class="d-none d-md-block"><button><img src="/assets/element-equal.svg" alt=""></button></li>
+      <li class="d-none d-md-block"><button><img src="assets/bucket.svg" alt=""></button></li>
+      <li class="d-none d-md-block"><button><img src="assets/element-equal.svg" alt=""></button></li>
       <li><p-menu #menu [model]="items" [popup]="true" class="flex justify-center" styleClass="w-full max-w-16rem">
           <ng-template #item let-item>
             <a pRipple class="flex items-center p-menu-item-link">

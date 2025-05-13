@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SharedDataService } from '../shared-data.service';
 
@@ -9,8 +9,10 @@ import { SharedDataService } from '../shared-data.service';
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css'
 })
+
+
 export class SidebarComponent {
 
-  constructor(public _sharedDataService: SharedDataService) { }
+  constructor(public _sharedDataService: SharedDataService) {}
 
 }

@@ -15,6 +15,7 @@ import { InputGroupModule } from 'primeng/inputgroup';
 import { SelectModule } from 'primeng/select';
 import { FloatLabel } from 'primeng/floatlabel';
 
+
 @Component({
   selector: 'app-pos-system',
   standalone: true,
@@ -25,6 +26,7 @@ import { FloatLabel } from 'primeng/floatlabel';
   templateUrl: './pos-system.component.html',
   styleUrl: './pos-system.component.css'
 })
+
 
 export class PosSystemComponent implements AfterViewInit {
 
@@ -48,6 +50,7 @@ export class PosSystemComponent implements AfterViewInit {
   constructor(private _products: ProductsService, public _CustomersService: CustomersService, private confirmationService: ConfirmationService,
     private messageService: MessageService, private cdr: ChangeDetectorRef) { }
 
+
   ngOnInit() {
     this.getProduct()
     this.getCustomersData()
@@ -59,7 +62,7 @@ export class PosSystemComponent implements AfterViewInit {
 
   filteredItem(category: string) {
     this.filterItems = [];
-    this.filterItems = this.productItems.filter(item => item.category == category)
+    this.filterItems = this.productItems.filter(item => item.category == category);
   }
 
   getProduct() {
@@ -70,18 +73,16 @@ export class PosSystemComponent implements AfterViewInit {
       this.invoiceItems = JSON.parse(invoice || '')
       this.totalOrderValue()
     })
-
   }
 
   getCustomersData() {
     this._CustomersService.getcustomers().then((data) => {
       this.customers = data || [];
-      console.log(this.customers)
     });
   }
 
   clearSelected() {
-    this.selectedCustomers = []
+    this.selectedCustomers = [];
   }
 
   confirm(event: Event, item: any) {
@@ -102,32 +103,32 @@ export class PosSystemComponent implements AfterViewInit {
     this.invoiceItems = [...this.invoiceItems, item];
     this.saveInvoiceItems();
     this.cdr.detectChanges();
-    this.totalOrderValue()
+    this.totalOrderValue();
   }
 
   saveInvoiceItems() {
-    localStorage.setItem('invoice', JSON.stringify(this.invoiceItems))
+    localStorage.setItem('invoice', JSON.stringify(this.invoiceItems));
   }
 
   totalOrderValue() {
     const allTotal: number = this.invoiceItems.reduce((sum, item) => sum + (Number(item.price) * Number(item.quantity)), 0);
-    this.totalValue = allTotal
+    this.totalValue = allTotal;
     const totalItems: number = this.invoiceItems.reduce((sum, item) => sum + Number(item.quantity), 0);
-    this.allitems = totalItems
+    this.allitems = totalItems;
     this.taxValue = Number(this.totalValue) * 0.15;
     this.orderTotal = Number(this.totalValue) + this.taxValue + this.shippingValue;
     this.saveInvoiceItems();
   }
 
   toggleState(event: any) {
-    this.opendToggle = event
+    this.opendToggle = event;
   }
 
   refreshInvoice() {
     this.invoiceItems = [];
     this.totalOrderValue();
     this.orderTotal = 0;
-    localStorage.removeItem('invoice')
+    localStorage.removeItem('invoice');
   }
 
 }

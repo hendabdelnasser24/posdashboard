@@ -89,7 +89,7 @@ export class CustomersComponent {
     this.createId()
     if (this.addCustomer.valid) {
       const customerData = this.addCustomer.value;
-      const dynamicId = this.createId()
+      const dynamicId = this.createId();
       customerData.id = dynamicId;
       const docId = dynamicId;
       this.customersService.addcustomer(customerData, docId);

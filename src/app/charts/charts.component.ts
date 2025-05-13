@@ -1,28 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
-import {
-  ChartComponent,
-  ApexChart,
-  ApexAxisChartSeries,
-  ApexTitleSubtitle,
-  ApexDataLabels,
-  ApexFill,
-  ApexYAxis,
-  ApexXAxis,
-  ApexTooltip,
-  ApexMarkers,
-  ApexAnnotations,
-  ApexStroke,
-  NgApexchartsModule,
-  ApexGrid
-} from "ng-apexcharts";
+import { ChartComponent, NgApexchartsModule, } from "ng-apexcharts";
 import { data } from './data';
 
 
 @Component({
   selector: 'app-charts',
   standalone: true,
-  imports: [CommonModule,NgApexchartsModule],
+  imports: [CommonModule, NgApexchartsModule,],
   templateUrl: './charts.component.html',
   styleUrl: './charts.component.css'
 })
@@ -65,7 +50,7 @@ export class ChartsComponent {
       }
     }
   };
-  
+
 
 
   constructor() {
@@ -144,6 +129,5 @@ export class ChartsComponent {
     this.activeOptionButton = option;
     this.chart.updateOptions(this.updateOptionsData[option], false, true, true);
   }
-
 
 }

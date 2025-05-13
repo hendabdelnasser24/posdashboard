@@ -28,6 +28,7 @@
     color: #7e8299;
     font-size: 12px;
   }
+
   i {
     font-size: 16px;
     color: #7e8299;
@@ -57,9 +58,11 @@
   transform: translate(-50%, -50%);
   color: var(--dashed-border-color);
   font-weight: 400;
+
   i {
     font-size: 70px;
   }
+
   p {
     font-size: 20px;
   }
@@ -69,6 +72,7 @@
   display: block;
   height: 100% !important;
 }
+
 ::ng-deep .p-datatable-table {
   height: 1;
 }
@@ -97,16 +101,19 @@ th {
   background: none !important;
   padding-bottom: 20px !important;
 }
+
 ::ng-deep .p-datatable-tbody {
   height: 100%;
   overflow-y: auto;
 }
+
 ::ng-deep .p-datatable-tbody td {
   font-size: 16px !important;
   font-weight: 600 !important;
   color: var(--dark-font-color) !important;
   max-width: 200px !important;
 }
+
 ::ng-deep p-table .p-inputtext {
   width: 105px !important;
 }

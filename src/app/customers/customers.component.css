@@ -3,11 +3,13 @@
   border-radius: 14px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px;
 }
+
 ::ng-deep .p-dialog img {
   width: 150px !important ;
   margin: 0 auto 2rem auto;
   display: block;
 }
+
 ::ng-deep .p-datatable-tbody img {
   width: 50px !important;
 }
@@ -26,6 +28,7 @@
     height: 100%;
     margin-bottom: 12px;
   }
+
   ::ng-deep p-table {
     min-height: calc(100vh - 142px);
   }

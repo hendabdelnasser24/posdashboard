@@ -1,31 +1,35 @@
-.sideBar{
-  background-color: #03070C;
+.sideBar {
+  background-color: #03070c;
   width: 140px;
   height: 100vh;
 }
 
-i{
+i {
   display: none;
 }
 
-.logo{
+.logo {
   width: 47px;
 }
+
 .categories li {
   margin-bottom: 46px;
 }
-.categories img{
+
+.categories img {
   width: 26px;
   margin-bottom: 11px;
 }
-.categories h5{
+
+.categories h5 {
   font-size: 16px;
   color: var(--second-color);
   font-weight: 500;
 }
-@media(max-width : 1400px){
-  .sideBar:before{
-    content: '';
+
+@media (max-width: 1400px) {
+  .sideBar:before {
+    content: "";
     position: absolute;
     left: 0;
     width: 100dvw;
@@ -33,14 +37,15 @@ i{
     z-index: -1;
     background: rgba(0, 0, 0, 0.8);
   }
- i {
-  display: block;
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--second-color);
 
- }
- .logo{
-  display: none;
- }
+  i {
+    display: block;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--second-color);
+  }
+
+  .logo {
+    display: none;
+  }
 }

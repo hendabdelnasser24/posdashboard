@@ -92,7 +92,7 @@ export class ProductsComponent {
       productData.category = productData.category
         .trim()
         .toLowerCase();
-      const dynamicId = this.createId()
+      const dynamicId = this.createId();
       productData.id = dynamicId;
       const docId = dynamicId;
       this.productService.addProduct(productData, docId);
