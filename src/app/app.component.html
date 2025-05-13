@@ -1,0 +1,13 @@
+<div class="AllContent d-flex">
+  <div class="sidebarArea" [class]=" this._sharedDataService.sideBarState ? 'open' : 'close' ">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="w-100">
+    <div>
+      <app-navbar></app-navbar>
+    </div>
+    <div class="container mt-2 max-w-full">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,167 @@
+<div class="home w-100 bg-white mt-3 p-3">
+  <div class="row row-gap-3 row-gap-xl-5">
+    <div class="py-0 px-2 col-sm-12 col-md-6 col-lg-6 col-xl-4 ">
+      <div class="sales p-1">
+        <div class="inner h-full w-full p-3">
+          <div class="d-flex align-items-center mb-2">
+            <div class="icon p-2 me-4">
+              <img src="/assets/sales_gzmhfem2qga4.svg" alt="">
+            </div>
+            <h4>Sales</h4>
+          </div>
+          <div class="content row">
+            <div class="col-6">
+              <div class="boxArea d-flex align-items-center">
+                <img class="me-3 ms-1" src="/assets/sales1.svg" alt="">
+                <div class="textBox">
+                  <h6>$12,458.00</h6>
+                  <p>Annual sales</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="boxArea d-flex align-items-center">
+                <img class="me-3 ms-1" src="/assets/sales2.svg" alt="">
+                <div class="textBox">
+                  <h6>$12.458</h6>
+                  <p>Annual profit</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="boxArea d-flex align-items-center">
+                <img class="me-3 ms-1" src="/assets/sales3.svg" alt="">
+                <div class="textBox">
+                  <h6>$12.458</h6>
+                  <p>Daily sales</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="boxArea d-flex align-items-center">
+                <img class="me-3 ms-1" src="/assets/sales4.svg" alt="">
+                <div class="textBox">
+                  <h6>$12.458</h6>
+                  <p>Daily profit</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="py-0 px-2 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+      <div class="purchase p-1">
+        <div class="inner h-full w-full p-3">
+          <div class="d-flex align-items-center mb-2">
+            <div class="icon p-2 me-4">
+              <img src="/assets/purchase.svg" alt="">
+            </div>
+            <h4>Purchases</h4>
+          </div>
+          <div class="content row">
+            <div class="col-6">
+              <div class="boxArea d-flex align-items-center">
+                <img class="me-3 ms-1" src="/assets/sales1.svg" alt="">
+                <div class="textBox">
+                  <h6>53</h6>
+                  <p>No of purchase</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="boxArea d-flex align-items-center">
+                <img class="me-3 ms-1" src="/assets/purchases2.svg" alt="">
+                <div class="textBox">
+                  <h6>67</h6>
+                  <p>Returns</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="boxArea d-flex align-items-center">
+                <img class="me-3 ms-1" src="/assets/sales3.svg" alt="">
+                <div class="textBox">
+                  <h6>$834.458</h6>
+                  <p>Purchase amount</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="boxArea d-flex align-items-center">
+                <img class="me-3 ms-1" src="/assets/purchases4.svg" alt="">
+                <div class="textBox">
+                  <h6>83</h6>
+                  <p>Cancel orders</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="py-0 px-2 col-sm-6 col-md-6 col-lg-4 col-xl-2">
+      <div class="stock p-1">
+        <div class="inner h-full w-full">
+          <div id="chart" class="text-center mt-3">
+            <apx-chart 
+            [series]="donutChartOptions.series" 
+            [chart]="donutChartOptions.chart"
+            [labels]="donutChartOptions.labels" 
+            [plotOptions]="donutChartOptions.plotOptions"
+            [responsive]="donutChartOptions.responsive" 
+            [legend]="donutChartOptions.legend"></apx-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="py-0 px-2 col-sm-6 col-md-6 col-lg-4 col-xl-2">
+      <div class="wastage p-1">
+        <div class="inner h-full w-full p-3">
+          <div class="d-flex align-items-center mb-2">
+            <div class="icon p-2 me-4">
+              <img src="/assets/sales_gzmhfem2qga4.svg" alt="">
+            </div>
+            <h4>Wastage product</h4>
+          </div>
+          <div class="content row">
+            <div class="col-12">
+              <div class="boxArea d-flex align-items-center">
+                <img class="me-3 ms-1" src="/assets/wastage1.svg" alt="">
+                <div class="textBox">
+                  <h6>364</h6>
+                  <p>No. items</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="boxArea d-flex align-items-center">
+                <img class="me-3 ms-1" src="/assets/wastage2.svg" alt="">
+                <div class="textBox">
+                  <h6>$1690.00</h6>
+                  <p>Loss</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+        <div class="pieChart col-sm-6 col-md-6 col-lg-4 col-xl-4">
+      <h4 class="mt-5 ps-4">Top selling items</h4>
+      <div class="picContent mt-5 d-flex flex-column justify-content-center align-items-center ">
+        <apx-chart #chart class=" px-5 w-full" [series]="chartOptions.series" [chart]="chartOptions.chart"
+          [labels]="chartOptions.labels" [colors]="chartOptions.colors"
+          [responsive]="chartOptions.responsive"></apx-chart>
+      </div>
+    </div>
+    <div class="pt-3 py-0 px-2 col-sm-12 col-xl-8">
+      <div class="chartArea p-3 w-full ">
+        <app-charts></app-charts>
+      </div>
+    </div>
+  </div>
+  <div>
+
+  </div>
+</div>

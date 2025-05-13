@@ -1,0 +1,53 @@
+.customers {
+  height: calc(100vh - 108px);
+  border-radius: 14px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px;
+}
+::ng-deep .p-dialog img {
+  width: 150px !important ;
+  margin: 0 auto 2rem auto;
+  display: block;
+}
+::ng-deep .p-datatable-tbody img {
+  width: 50px !important;
+}
+
+::ng-deep .AddBtn .p-button {
+  padding: 10px 24px;
+}
+
+::ng-deep .btnCancel .p-button-text {
+  color: #3e97ff !important;
+}
+
+@media (max-width: 1200px) {
+  .customers {
+    min-height: calc(100vh - 108px);
+    height: 100%;
+    margin-bottom: 12px;
+  }
+  ::ng-deep p-table {
+    min-height: calc(100vh - 142px);
+  }
+}
+
+@media (max-width: 810px) {
+  .firstLine {
+    width: 100%;
+    justify-content: start !important;
+    ::ng-deep p-iconfield {
+      margin-top: 16px;
+      width: 100% !important;
+    }
+  }
+
+  .firstLine ::ng-deep input {
+    width: 100% !important;
+  }
+
+  .btnArea {
+    width: 100%;
+    justify-content: end !important;
+    margin-right: 0px !important;
+  }
+}

@@ -1,0 +1,97 @@
+.home {
+  height: calc(100vh - 108px);
+  border-radius: 14px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px;
+}
+
+.sales,
+.purchase,
+.stock,
+.wastage {
+  height: 240px;
+  border: 1px solid var(--nav-icon-color);
+  border-radius: 20px;
+}
+
+.inner {
+  border: 1px dashed var(--second-color);
+  border-radius: 14px;
+}
+
+h4 {
+  font-size: 15px;
+  font-weight: bold;
+  color: var(--dark-font-color);
+}
+
+.icon {
+  background-color: var(--backgroundInput-color);
+  border-radius: 6px;
+}
+
+.icon img {
+  height: 32px;
+}
+
+.boxArea {
+  background-color: var(--backgroundInput-color);
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px dashed var(--dashed-border-color);
+}
+
+.boxArea img {
+  height: 28px;
+}
+
+.textBox h6 {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--first-color);
+}
+
+.textBox p {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--nav-icon-color);
+}
+
+.chartArea {
+  height: 440px;
+  border-radius: 20px;
+}
+
+@media (min-width: 1200px) {
+  .row-gap-xl-5 {
+    row-gap: 3rem !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .home {
+    height: auto;
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 992px) {
+  .pieChart {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 576px) {
+  .boxArea {
+    padding-inline: 6px;
+    img{
+      margin-right: 10px !important;
+    }
+  }
+  .textBox p {
+    font-size: 10px;
+  }
+  .chartArea{
+    padding-inline: 0px !important;
+  }
+}

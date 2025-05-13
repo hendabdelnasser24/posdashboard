@@ -1,0 +1,245 @@
+<div class="posContent mt-3 row h-100">
+  <div class=" pb-0 col-lg-12" [class]="opendToggle ? 'col-xl-5' : 'col-xl-3'">
+    <div class="firstSide">
+      <div class="categories p-2">
+        <ul class="d-flex h-100 gap-2">
+          <li class="d-flex justify-content-center text-center"><button (click)="filteredItem('lunch')">
+              <div>
+                <img src="assets/lunch.png" alt="">
+                <div class="infoText">
+                  <h4>Lunch</h4>
+                  <h6>8 options</h6>
+                </div>
+              </div>
+            </button></li>
+          <li class="d-flex justify-content-center text-center"><button (click)="filteredItem('breakfast')">
+              <div>
+                <img src="assets/breakfast.png" alt="">
+                <div class="infoText">
+                  <h4>Breakfast</h4>
+                  <h6>8 options</h6>
+                </div>
+              </div>
+            </button></li>
+          <li class="d-flex justify-content-center"><button (click)="filteredItem('salad')">
+              <div>
+                <img src="assets/salad.png" alt="">
+                <div class="infoText">
+                  <h4>Salad</h4>
+                  <h6>8 options</h6>
+                </div>
+              </div>
+            </button></li>
+          <li class="d-flex justify-content-center"><button (click)="filteredItem('sandwich')">
+              <div>
+                <img src="assets/burger.png" alt="">
+                <div class="infoText">
+                  <h4>Sandwiches</h4>
+                  <h6>8 options</h6>
+                </div>
+              </div>
+            </button></li>
+          <li class="d-flex justify-content-center text-center"><button (click)="filteredItem('pizza')">
+              <div>
+                <img src="assets/pizza.png" alt="">
+                <div class="infoText">
+                  <h4>Pizza</h4>
+                  <h6>8 options</h6>
+                </div>
+              </div>
+            </button></li>
+          <li class="d-flex justify-content-center"><button (click)="filteredItem('beverage')">
+              <div>
+                <img src="assets/coffee.png" alt="">
+                <div class="infoText">
+                  <h4>Beverages</h4>
+                  <h6>8 options</h6>
+                </div>
+              </div>
+            </button></li>
+          <li class="d-flex justify-content-center"><button (click)="filteredItem('dessert')">
+              <div>
+                <img src="assets/dessert.png" alt="">
+                <div class="infoText">
+                  <h4>Dessert</h4>
+                  <h6>8 options</h6>
+                </div>
+              </div>
+            </button></li>
+        </ul>
+      </div>
+      <div class="items mt-3 p-2">
+        <div class="itemsContent w-100 h-100">
+          <div class="d-flex justify-content-center">
+            <div class="row gap-0 w-100">
+              <div *ngFor="let item of filterItems" class="productItem p-1 col-md-2 col-sm-2"
+                [class]="opendToggle ? 'col-xl-2' : 'col-xl-4' ">
+                <p-confirmpopup #cp>
+                  <ng-template pTemplate="headless" let-message>
+                    <div class="rounded p-4">
+                      <span>{{ message.message }}</span>
+                      <div class="flex items-center gap-2 mt-4">
+                        <p-button (onClick)="cp.onAccept()" label="Add" size="small" />
+                        <p-button (onClick)="cp.onReject()" label="Cancel" [text]="true" size="small"
+                          severity="secondary" />
+                      </div>
+                    </div>
+                  </ng-template>
+                </p-confirmpopup>
+                <button (click)="confirm($event, item)" [class]="opendToggle ? 'px-0' : 'px-1' ">
+                  <div class="itemCard d-flex flex-column text-center align-items-center p-1">
+                    <div class="imgArea text-center">
+                      <img [src]="item.image" class="w-100" alt="" />
+                    </div>
+                    <div class="descripItem">
+                      <h3 class="pt-1">{{ item.name }}</h3>
+                      <h6>{{ item.cook_time }}</h6>
+                      <p>{{ item.price + '$' }}</p>
+                    </div>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="secondSide ps-xl-0 col-lg-12 " [class]="opendToggle ? 'col-xl-7' : 'col-xl-9' ">
+    <div class="customs d-flex align-items-center">
+      <div class=" row py-3 px-4">
+        <div class="col-lg-4 col-md-6 col-sm-6 py-2">
+          <p-inputgroup>
+            <p-inputgroup-addon>
+              <i class="pi pi-user"></i>
+            </p-inputgroup-addon>
+            <p-select [options]="customers" [(ngModel)]="selectedCustomers" optionLabel="name" [filter]="true"
+              filterBy="name" [showClear]="true" (onClear)="clearSelected()" placeholder="Select a Customer"
+              class="flex align-item w-full md:w-56 position-relative z-4">
+              <ng-template #selectedItem let-selectedOption>
+                <div class="flex items-center gap-2">
+                  <div>{{ selectedOption.name }}</div>
+                  <div></div>
+                </div>
+              </ng-template>
+              <ng-template let-customer #item>
+                <div class="flex items-center gap-2">
+                  <div>{{ customer.name }}</div>
+                </div>
+              </ng-template>
+            </p-select>
+          </p-inputgroup>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-6 py-2">
+          <p-inputgroup>
+            <p-inputgroup-addon>
+              <i class="pi pi-user"></i>
+            </p-inputgroup-addon>
+            <p-floatlabel>
+              <label for="over_label"></label>
+              <input pInputText id="over_label" [(ngModel)]="selectedCustomers.phone" placeholder="Phone" disabled />
+            </p-floatlabel>
+          </p-inputgroup>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-6 py-2">
+          <p-inputgroup>
+            <p-inputgroup-addon>
+              <i class="pi pi-user"></i>
+            </p-inputgroup-addon>
+            <p-floatlabel>
+              <input pInputText id="over_label" [(ngModel)]="selectedCustomers.code" placeholder="Code" disabled />
+              <label for="over_label"></label>
+            </p-floatlabel>
+          </p-inputgroup>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6 py-2">
+          <p-inputgroup>
+            <p-inputgroup-addon>
+              <i class="pi pi-user"></i>
+            </p-inputgroup-addon>
+            <p-floatlabel>
+              <input pInputText id="over_label" [(ngModel)]="selectedCustomers.city" placeholder="City" disabled />
+              <label for="over_label"></label>
+            </p-floatlabel>
+          </p-inputgroup>
+        </div>
+        <div class="col-lg-8 col-md-12 col-sm-12 py-2">
+          <p-inputgroup>
+            <p-inputgroup-addon>
+              <i class="pi pi-user"></i>
+            </p-inputgroup-addon>
+            <p-floatlabel>
+              <input pInputText id="over_label" [(ngModel)]="selectedCustomers.address" placeholder="Address"
+                disabled />
+              <label for="over_label"></label>
+            </p-floatlabel>
+          </p-inputgroup>
+        </div>
+      </div>
+    </div>
+    <div class="invoicePart row d-flex ">
+      <div class=" mt-3 col-md-12" [class]="opendToggle ? 'col-lg-12' : 'col-lg-8' ">
+        <div class="invoice">
+          <div class="invoiceArea px-3 w-100">
+            <app-invoice (opendButton)="toggleState($event)" [productList]="invoiceItems"
+              [refreshList]="refreshInvoice.bind(this)" [totalOrderOperation]="totalOrderValue.bind(this)">
+            </app-invoice>
+          </div>
+        </div>
+      </div>
+      <div class="py-0 ps-lg-0 col-md-12" [class]="opendToggle ? 'd-none' : 'col-lg-4' ">
+        <div>
+          <div class="workerDetails mt-3 p-3">
+            <div class="dashedline h-100">
+              <div class="d-flex align-items-center h-100 p-2">
+                <img class="h-100 rounded-3" src="assets/staff.png" alt="">
+                <div class="ms-3">
+                  <h6>Owen neil</h6>
+                  <p>owen.neilgmail.com</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="totalCard mt-3">
+            <div class="promoCode pt-5 px-4">
+              <p-inputgroup>
+                <p-inputgroup-addon><img src="assets/promo.svg" alt=""></p-inputgroup-addon>
+                <p-inputnumber [(ngModel)]="promoCode" placeholder="Enter  promo code " />
+                <p-button class="applyBtn" label="Apply" />
+              </p-inputgroup>
+            </div>
+            <div class=" totalTable mt-5 pe-2 ps-4">
+              <table class="min-w-full">
+                <tbody>
+                  <tr>
+                    <td>Items</td>
+                    <td class="text-center">{{allitems}}</td>
+                  </tr>
+                  <tr>
+                    <td>Total</td>
+                    <td class="text-center">{{totalValue | number:'1.0-2'}}$</td>
+                  </tr>
+                  <tr>
+                    <td>Order tax</td>
+                    <td class="text-center">{{taxValue | number:'1.0-2'}}$</td>
+                  </tr>
+                  <tr>
+                    <td>Shipping</td>
+                    <td class="text-center">{{this.shippingValue}}$</td>
+                  </tr>
+                  <tr class="border-0">
+                    <td>order total</td>
+                    <td class="text-center">{{orderTotal | number:'1.0-2'}}$</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

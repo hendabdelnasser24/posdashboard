@@ -1,0 +1,151 @@
+<div class="customers w-100 bg-white mt-3 p-3">
+  <div class="card w-100 h-full ">
+    <p-toast />
+
+    <p-table #dt [value]="customers" [rows]="6" [paginator]="true"
+      [globalFilterFields]="['name', 'country.name', 'representative.name', 'status']"
+      [tableStyle]="{ 'min-width': '50rem' }" [(selection)]="selectedCustomer" [rowHover]="true" dataKey="id"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+      <ng-template #caption>
+        <div class="d-flex flex-wrap row-gap-3 mt-2 justify-content-between items-center">
+          <div class="firstLine d-flex flex-wrap justify-content-between align-items-center">
+            <h5 class="mb-0 mx-4 fw-bold">Manage customers</h5>
+            <p-iconfield>
+              <p-inputicon styleClass="pi pi-search" />
+              <input pInputText type="text" (input)="handleSearchInput($event)" placeholder="Search..." />
+
+            </p-iconfield>
+          </div>
+          <div class="btnArea d-flex my-2 me-3">
+            <div class="AddBtnArea ms-4">
+              <p-button class="AddBtn me-3  " (click)="showDialog()" icon="pi pi-plus" label="Add" />
+              <p-dialog header="New customer" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
+                <span class="p-text-secondary block mb-5">Add a new.</span>
+
+                <form [formGroup]="addCustomer" (ngSubmit)="addNewCustomer()">
+
+                  <div class="flex items-center gap-4 mb-4">
+                    <label for="name" class="font-semibold w-24">Name</label>
+                    <input formControlName="name" pInputText id="name" placeholder="name" class="flex-auto"
+                      autocomplete="off" />
+                  </div>
+                  <div class="flex items-center gap-4 mb-4">
+                    <label for="phone" class="font-semibold w-24">Phone</label>
+                    <input formControlName="phone" pInputText id="phone" class="flex-auto " placeholder="phone"
+                      autocomplete="off" />
+                  </div>
+                  <div class="flex items-center gap-4 mb-4">
+                    <label for="city" class="font-semibold w-24">City</label>
+                    <input formControlName="city" pInputText id="city" placeholder="city" class="flex-auto"
+                      autocomplete="off" />
+                  </div>
+                  <div class="flex items-center gap-4 mb-4">
+                    <label for="address" class="font-semibold w-24">Address</label>
+                    <input formControlName="address" pInputText id="address" placeholder="Address" class="flex-auto"
+                      autocomplete="off" />
+                  </div>
+                  <div class="flex justify-end gap-2">
+                    <p-button label="Cancel" severity="secondary" (click)="visible = false" />
+                    <p-button [disabled]="addCustomer.invalid" label="Add" type="Submit" />
+                  </div>
+                </form>
+              </p-dialog>
+
+            </div>
+            <div>
+              <p-button severity="danger" label="Delete" icon="pi pi-trash" outlined
+                (onClick)="deleteSelectedCustomers()" [disabled]="!selectedCustomer || !selectedCustomer.length" />
+            </div>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template #header>
+        <tr>
+          <th style="width: 2rem">
+            <p-tableHeaderCheckbox />
+          </th>
+          <th pSortableColumn="id" style="min-width: 6rem">
+            Code
+            <p-sortIcon field="id" />
+          </th>
+          <th pSortableColumn="name" style="min-width: 8rem">
+            Name
+            <p-sortIcon field="name" />
+          </th>
+          <th style="min-width: 8rem">
+            Phone
+          </th>
+          <th style="min-width: 8rem">
+            City
+          </th>
+          <th style="min-width:10rem">
+            Adress
+          </th>
+          <th style="min-width: 12rem"></th>
+        </tr>
+      </ng-template>
+      <ng-template #body let-customer>
+        <tr>
+          <td style="width: 2rem">
+            <p-tableCheckbox [value]="customer" />
+          </td>
+          <td style="min-width: 4rem">{{ customer.id }}</td>
+          <td style="min-width: 8rem">{{ customer.name }}</td>
+          <td>{{ customer.phone}}</td>
+          <td>{{ customer.city}}</td>
+          <td>{{ customer.address }}</td>
+          <td>
+            <p-button icon="pi pi-pencil" class="mr-2" [rounded]="true" [outlined]="true"
+              (click)="editCustomer(customer)" />
+            <p-button icon="pi pi-trash" severity="danger" [rounded]="true" [outlined]="true"
+              (click)="deleteCustomer(customer)" />
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template #summary>
+        <div class="flex items-center justify-between ms-4 pb-4">In total there are {{ customers ? customers.length : 0
+          }}
+          customers.
+        </div>
+      </ng-template>
+    </p-table>
+
+    <p-dialog [(visible)]="customerDialog" [style]="{ width: 'auto' }" header="Customer Details" [modal]="true">
+      <ng-template #content>
+        <form [formGroup]="addCustomer" (ngSubmit)="saveCustomer(customer.id)">
+          <div class="d-flex flex-column gap-4 px-4">
+            <div class="w-100">
+              <label for="name" class="block font-bold mb-3">Name</label>
+              <input formControlName="name" type="text" pInputText id="name" required autofocus fluid />
+              <small class="text-red-500" *ngIf="submitted && !customer.name">Name is required.</small>
+            </div>
+            <div class="d-flex gap-4">
+              <div class="">
+                <label for="phone" class="block font-bold mb-3">Phone</label>
+                <input formControlName="phone" type="number" pInputText id="number" required autofocus fluid />
+              </div>
+              <div>
+                <label for="city" class="block font-bold mb-3">City</label>
+                <input formControlName="city" type="text" pInputText id="city" required autofocus fluid />
+                <small class="text-red-500" *ngIf="submitted && !customer.city">City is required.</small>
+              </div>
+            </div>
+            <div class="w-100">
+              <label for="address" class="block font-bold mb-3">Address</label>
+              <input formControlName="address" type="text" pInputText id="address" required autofocus fluid />
+              <small class="text-red-500" *ngIf="submitted && !customer.address">Address is required.</small>
+            </div>
+            <div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-end mt-6 mb-2 me-3">
+            <p-button class="btnCancel" label="Cancel" icon="pi pi-times" text (click)="hideDialog()" />
+            <p-button label="Save" icon="pi pi-check" type="submit" />
+          </div>
+        </form>
+      </ng-template>
+    </p-dialog>
+
+    <p-confirmDialog [style]="{ width: '450px' }" />
+  </div>
+</div>

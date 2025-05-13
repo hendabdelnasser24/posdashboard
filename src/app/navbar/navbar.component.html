@@ -1,0 +1,129 @@
+<nav class="d-flex justify-content-between align-items-center px-3">
+  <div class="d-flex align-items-center">
+    <div class="meanuBar me-3">
+      <button (click)="_sharedDataService.updateSidebarState()"> <i class="pi pi-bars"></i></button>
+    </div>
+    <div class="date d-flex align-items-center justify-content-center ">
+      <h6 class="me-2"> {{ currentDate | date:'d MMM yyyy' }} </h6>
+      <img src="/assets/date-icon.svg" alt="">
+    </div>
+    <div class="leftUl d-flex align-items-center ">
+      <ul class="  d-flex align-items-center gap-md-4 gap-sm-3">
+        <li class="d-none d-md-block">
+          <button class="d-flex flex-column align-items-center px-0" (click)="toggle($event)">
+            <img src="/assets/calc.svg" alt="">
+            <h6>Calculator</h6>
+          </button>
+          <p-popover #op styleClass="w-16rem">
+            <div>
+              <div class="display w-100 mb-3 pe-3">{{display}}</div>
+              <div class="d-flex">
+                <div class="num-buttons d-grid w-auto">
+                  <button class="button button-1" (click)="numClick(1)">1</button>
+                  <button class="button button-2" (click)="numClick(2)">2</button>
+                  <button class="button button-3" (click)="numClick(3)">3</button>
+                  <button class="button button-4" (click)="numClick(4)">4</button>
+                  <button class="button button-5" (click)="numClick(5)">5</button>
+                  <button class="button button-6" (click)="numClick(6)">6</button>
+                  <button class="button button-7" (click)="numClick(7)">7</button>
+                  <button class="button button-8" (click)="numClick(8)">8</button>
+                  <button class="button button-9" (click)="numClick(9)">9</button>
+                  <button class="button button-0" (click)="numClick(0)">0</button>
+                  <button class="button-ac" (click)="acBtn()">AC</button>
+                </div>
+                <div class="operator-buttons d-grid w-auto">
+                  <button class="button button-m" (click)="oper('m')">x</button>
+                  <button class="button button-d" (click)="oper('d')">/</button>
+                  <button class="button button-a" (click)="oper('a')">+</button>
+                  <button class="button button-s" (click)="oper('s')">-</button>
+                </div>
+              </div>
+              <button class="equals mt-2" (click)="calculate()">=</button>
+            </div>
+          </p-popover>
+        </li>
+        <li><a href="#">
+            <img src="/assets/attend.svg" alt="">
+            <h6>Attendance</h6>
+          </a>
+        </li>
+        <li><a routerLink="pos">
+            <img src="/assets/pos.svg" alt="">
+            <h6>POS</h6>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="rightUl">
+    <ul class="d-flex align-items-center gap-3">
+      <li class="d-none d-md-block">
+        <div class="card border-0 flex justify-center">
+          <p-avatar-group>
+            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" size="large"
+              shape="circle" />
+            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/asiyajavayant.png" size="large"
+              shape="circle" />
+            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/onyamalimba.png" size="large"
+              shape="circle" />
+            <p-avatar label="+10" shape="circle" size="large" />
+          </p-avatar-group>
+        </div>
+      </li>
+      <li><button><img src="/assets/messages.svg" alt=""></button></li>
+      <li class="notifys">
+        <button class="position-relative" (click)="toggle2($event)">
+          <img src="/assets/Item.svg" alt="">
+          <p-badge value="2" severity="danger" badgeSize="small" class="position-absolute" />
+        </button>
+        <p-popover #op2 styleClass="w-full max-w-16rem">
+          <div class="flex flex-col gap-4">
+            <div>
+              <span class="font-medium block mb-2">Notifications</span>
+              <ul class="list-none p-0 m-0 d-flex flex-column text-center">
+                <li *ngFor="let note of notifications"
+                  class="d-flex align-items-center gap-2 px-2 py-3 hover:bg-emphasis cursor-pointer rounded-border">
+                  <img [src]="'https://primefaces.org/cdn/primeng/images/demo/avatar/' + note.image" />
+                  <div class="d-flex flex-column align-items-baseline">
+                    <p class="font-medium">{{ note.name }}</p>
+                    <div class="text-sm text-surface-500 dark:text-surface-400">{{ note.email }}</div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </p-popover>
+      </li>
+      <li class="d-none d-md-block"><button><img src="/assets/bucket.svg" alt=""></button></li>
+      <li class="d-none d-md-block"><button><img src="/assets/element-equal.svg" alt=""></button></li>
+      <li><p-menu #menu [model]="items" [popup]="true" class="flex justify-center" styleClass="w-full max-w-16rem">
+          <ng-template #item let-item>
+            <a pRipple class="flex items-center p-menu-item-link">
+              <span [class]="item.icon"></span>
+              <span class="ml-2">{{ item.label }}</span>
+              <p-badge *ngIf="item.badge" class="ml-auto" [value]="item.badge" />
+              <span *ngIf="item.shortcut"
+                class="ml-auto border border-surface rounded bg-emphasis text-muted-color text-xs p-1">
+                {{ item.shortcut }}
+              </span>
+            </a>
+          </ng-template>
+          <ng-template #end>
+            <button pRipple
+              class="relative overflow-hidden w-full border-0 bg-transparent flex items-center items-start  mb-1 p-2 pl-4 hover:bg-surface-100 dark:hover:bg-surface-800 rounded-none cursor-pointer transition-colors duration-200">
+              <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" class="mr-2"
+                shape="circle" />
+              <span class="inline-flex flex-col align-items-center">
+                <span class="font-bold me-2">Amy Elsner</span>
+                <span class="text-sm">Admin</span>
+              </span>
+            </button>
+          </ng-template>
+        </p-menu>
+        <p-button (click)="menu.toggle($event)"><p-avatar
+            image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" size="large"
+            shape="circle" /></p-button>
+      </li>
+    </ul>
+  </div>
+</nav>

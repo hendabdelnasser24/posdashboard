@@ -1,0 +1,62 @@
+<div class="d-flex align-items-center justify-content-between py-3">
+  <div class="d-flex">
+    <div class="invoiceSearch col-9 ps-0 relative">
+      <p-iconfield>
+        <p-inputicon styleClass="pi pi-search" class="absolute start-0" />
+        <input pInputText type="text" (input)="handleSearchInput($event)" placeholder="Search product in invoice "
+          class="w-100 py-1" />
+      </p-iconfield>
+    </div>
+    <div class="refreshArea d-flex align align-items-center col-5">
+      <button (click)="getRefreshList()"><i class="pi pi-trash"></i></button>
+      <p>Delete invoice</p>
+    </div>
+  </div>
+  <div class="d-xl-flex d-none align-items-center">
+    <div class="toggleArea d-flex align-items-center">
+      <p class="mb-0 me-2">ENABLE MORE ITEMS <br> AND CLOSE TOTAL CARD</p>
+      <p-toggleswitch (click)="openToggle()" class="toggleBtn d-flex align-items-center" />
+    </div>
+  </div>
+</div>
+<div class="position-relative h-100 text-center">
+  <div *ngIf="productList.length == 0" class="emptyText position-absolute z-5 top-50 left-50">
+    <i class="pi pi-shopping-bag mb-4"></i>
+    <p>You don't have any items yet</p>
+  </div>
+  <div class="h-100">
+    <p-table #dt [value]="productList" [globalFilterFields]="['name', 'category']" [scrollable]="true"
+      scrollHeight="100%" [tableStyle]="{'min-width': '40rem'}">
+      <ng-template #header>
+        <tr class="z-4">
+          <th pSortableColumn="id">
+            ID <p-sortIcon field="id" />
+          </th>
+          <th pSortableColumn="name">
+            Name <p-sortIcon field="name" />
+          </th>
+          <th pSortableColumn="price" class="text-center">
+            Price<p-sortIcon field="price" />
+          </th>
+          <th pSortableColumn="quantity" class="text-center">
+            Quantity <p-sortIcon field="quantity" />
+          </th>
+          <th pSortableColumn="code" class="text-center">
+            Subtotal <p-sortIcon field="code" />
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template #body let-product>
+        <tr>
+          <td>{{ product.id }}</td>
+          <td>{{ product.name }}</td>
+          <td class="text-center">{{ product.price }}</td>
+          <td class="text-center"> <p-inputnumber [(ngModel)]="product.quantity" (onInput)="getTotalOrder()"
+              mode="decimal" [showButtons]="true" inputId="minmax-buttons" [min]="0" [max]="100" />
+          </td>
+          <td class="text-center"> {{ (product.price * product.quantity) | number:'1.0-2' }} </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

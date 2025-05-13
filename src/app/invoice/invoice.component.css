@@ -1,0 +1,119 @@
+.toggleBtn {
+  height: 35px !important;
+  width: 50px !important;
+}
+
+.toggleArea p {
+  font-size: 12px;
+  color: #7e8299;
+}
+
+::ng-deep .pi-search:before {
+  color: var(--dashed-border-color);
+  font-weight: 800;
+  background-color: var(--dark-font-color);
+  border-radius: 6px 0 0 6px;
+  padding: 8.8px;
+}
+
+::ng-deep .p-inputtext::placeholder {
+  color: var(--light-font-color) !important;
+  padding-left: 12px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.refreshArea {
+  p {
+    color: #7e8299;
+    font-size: 12px;
+  }
+  i {
+    font-size: 16px;
+    color: #7e8299;
+  }
+}
+
+::ng-deep .p-toggleswitch {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+::ng-deep .p-toggleswitch-handle {
+  width: 27px !important;
+  height: 27px !important ;
+  margin-block-start: calc(-1 * calc(27px / 2)) !important;
+}
+
+::ng-deep .p-inputswitch-slider {
+  padding-right: 6px !important;
+}
+
+::ng-deep .p-inputswitch-checked .p-inputswitch-slider {
+  padding-left: 6px !important;
+}
+
+.emptyText {
+  transform: translate(-50%, -50%);
+  color: var(--dashed-border-color);
+  font-weight: 400;
+  i {
+    font-size: 70px;
+  }
+  p {
+    font-size: 20px;
+  }
+}
+
+::ng-deep .p-datatable {
+  display: block;
+  height: 100% !important;
+}
+::ng-deep .p-datatable-table {
+  height: 1;
+}
+
+::ng-deep p-table::before {
+  position: absolute;
+  content: " " !important;
+  height: 46px;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  border-radius: 6px;
+  background-color: var(--backgroundInput-color);
+}
+
+::ng-deep .p-datatable-thead {
+  background: none !important;
+}
+
+th {
+  background: none;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  color: var(--light-font-color) !important ;
+  background: none !important;
+  padding-bottom: 20px !important;
+}
+::ng-deep .p-datatable-tbody {
+  height: 100%;
+  overflow-y: auto;
+}
+::ng-deep .p-datatable-tbody td {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: var(--dark-font-color) !important;
+  max-width: 200px !important;
+}
+::ng-deep p-table .p-inputtext {
+  width: 105px !important;
+}
+
+@media (max-width: 576px) {
+  .refreshArea p {
+    width: 14px;
+    font-size: xx-small;
+  }
+}
