@@ -145,8 +145,7 @@
     margin-bottom: 16px;
   }
 
-  .customs,
-  .totalCard {
+  .customs {
     height: auto;
   }
 }
@@ -169,6 +168,11 @@
 
   .workerDetails {
     margin-top: 16px;
+  }
+
+   .totalCard {
+    height: auto;
+    padding-bottom: 12px;
   }
 }
 

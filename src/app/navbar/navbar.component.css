@@ -176,11 +176,22 @@ li img {
     display: none !important;
   }
 }
+
+@media (max-width: 768px){
+.rightUl button{
+  padding: 0px;
+}
+}
+
 @media (max-width: 576px) {
   .leftUl ul {
     gap: 16px;
+    img {
+      height: 25px;
+      margin: 0;
+    }
     h6 {
-      font-size: 9px;
+      display: none;
     }
   }
 }
