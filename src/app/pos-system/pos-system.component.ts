@@ -20,7 +20,7 @@ import { FloatLabel } from 'primeng/floatlabel';
   selector: 'app-pos-system',
   standalone: true,
   imports: [ButtonModule, FormsModule, NgFor,
-    StyleClassModule, InvoiceComponent, ReactiveFormsModule, ConfirmPopupModule,ConfirmPopup, InputGroup,
+    StyleClassModule, InvoiceComponent, ReactiveFormsModule, ConfirmPopupModule, ConfirmPopup, InputGroup,
     InputGroupAddonModule, InputNumber, InputGroupModule, SelectModule, FloatLabel, DecimalPipe],
   providers: [ConfirmationService, MessageService],
   templateUrl: './pos-system.component.html',
@@ -108,6 +108,15 @@ export class PosSystemComponent implements AfterViewInit {
 
   saveInvoiceItems() {
     localStorage.setItem('invoice', JSON.stringify(this.invoiceItems));
+  }
+
+  removeItemFromCart(id: any) {
+    this.invoiceItems = this.invoiceItems.filter(item => item.id !== id);
+    this.saveInvoiceItems();
+    this.totalOrderValue();
+    if (this.invoiceItems.length == 0) {
+      this.refreshInvoice()
+    }
   }
 
   totalOrderValue() {

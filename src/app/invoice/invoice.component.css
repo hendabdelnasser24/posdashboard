@@ -103,6 +103,10 @@ th {
   padding-bottom: 20px !important;
 }
 
+td i {
+  color: #7e8299;
+}
+
 ::ng-deep .p-datatable-tbody {
   height: 100%;
   overflow-y: auto;

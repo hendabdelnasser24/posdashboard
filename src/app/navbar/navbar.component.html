@@ -76,7 +76,7 @@
           <img src="assets/Item.svg" alt="">
           <p-badge value="2" severity="danger" badgeSize="small" class="position-absolute" />
         </button>
-        <p-popover #op2 styleClass="w-full max-w-16rem">
+        <p-popover #op2 styleClass="w-full max-w-16rem ">
           <div class="flex flex-col gap-4">
             <div>
               <span class="font-medium block mb-2">Notifications</span>
@@ -110,7 +110,7 @@
           </ng-template>
           <ng-template #end>
             <button pRipple
-              class="relative overflow-hidden w-full border-0 bg-transparent flex items-center items-start  mb-1 p-2 pl-4 hover:bg-surface-100 dark:hover:bg-surface-800 rounded-none cursor-pointer transition-colors duration-200">
+              class="relative overflow-hidden w-full border-0 bg-transparent flex   mb-1 p-2 pl-4 hover:bg-surface-100 dark:hover:bg-surface-800 rounded-none cursor-pointer transition-colors duration-200">
               <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" class="mr-2"
                 shape="circle" />
               <span class="inline-flex flex-col align-items-center">
@@ -120,9 +120,8 @@
             </button>
           </ng-template>
         </p-menu>
-        <p-button (click)="menu.toggle($event)"><p-avatar
-            image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" size="large"
-            shape="circle" /></p-button>
+        <p-button (click)="menu.toggle($event)" class="d-flex align-items-center"><p-avatar image="assets/staff.png"
+            size="large" shape="circle" /></p-button>
       </li>
     </ul>
   </div>

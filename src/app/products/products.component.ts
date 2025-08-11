@@ -98,6 +98,8 @@ export class ProductsComponent {
       this.productService.addProduct(productData, docId);
       this.getProductsData();
       this.addItem.reset();
+      this.visible = false;
+
     } else {
       console.log('add product faild');
     }

@@ -73,6 +73,7 @@ export class CustomersComponent {
 
 
   showDialog() {
+    this.addCustomer.reset();
     this.visible = true;
   }
 
@@ -95,6 +96,7 @@ export class CustomersComponent {
       this.customersService.addcustomer(customerData, docId);
       this.getCustomersData();
       this.addCustomer.reset();
+      this.visible = false;
     } else {
       console.log('Add customer faild');
     }

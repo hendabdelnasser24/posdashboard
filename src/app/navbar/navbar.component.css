@@ -177,10 +177,10 @@ li img {
   }
 }
 
-@media (max-width: 768px){
-.rightUl button{
-  padding: 0px;
-}
+@media (max-width: 768px) {
+  .rightUl button {
+    padding: 0px;
+  }
 }
 
 @media (max-width: 576px) {

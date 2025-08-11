@@ -26,7 +26,7 @@
   </div>
   <div class="h-100">
     <p-table #dt [value]="productList" [globalFilterFields]="['name', 'category']" [scrollable]="true"
-      scrollHeight="100%" [tableStyle]="{'min-width': '40rem'}">
+      scrollHeight="100%" [tableStyle]="{'min-width': '42rem'}">
       <ng-template #header>
         <tr class="z-4">
           <th pSortableColumn="id">
@@ -44,6 +44,7 @@
           <th pSortableColumn="code" class="text-center">
             Subtotal <p-sortIcon field="code" />
           </th>
+           <th class="text-center"></th>
         </tr>
       </ng-template>
       <ng-template #body let-product>
@@ -55,6 +56,8 @@
               mode="decimal" [showButtons]="true" inputId="minmax-buttons" [min]="0" [max]="100" />
           </td>
           <td class="text-center"> {{ (product.price * product.quantity) | number:'1.0-2' }} </td>
+          <td class="text-center"> <button (click)="removeProduct(product.id)"><i class="pi pi-trash"></i></button>
+          </td>
         </tr>
       </ng-template>
     </p-table>

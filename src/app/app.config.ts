@@ -7,7 +7,7 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { providePrimeNG } from 'primeng/config';
 import Lara from '@primeng/themes/lara';
-import { NgApexchartsModule } from 'ng-apexcharts';
+import { definePreset } from '@primeng/themes';
 
 
 export const appConfig: ApplicationConfig = {
@@ -26,10 +26,26 @@ export const appConfig: ApplicationConfig = {
 
 
     theme: {
-      preset: Lara,
+      preset: definePreset(Lara, {
+        semantic: {
+          primary: {
+            50: '#eff6ff',
+            100: '#dbeafe',
+            200: '#bfdbfe',
+            300: '#93c5fd',
+            400: '#60a5fa',
+            500: '#3b82f6', // main blue
+            600: '#2563eb',
+            700: '#1d4ed8',
+            800: '#1e40af',
+            900: '#1e3a8a',
+            950: '#172554'
+          }
+        }
+      }),
       options: {
         prefix: 'p',
-        darkModeSelector: 'none',
+        darkModeSelector: 'none'
       }
     },
 

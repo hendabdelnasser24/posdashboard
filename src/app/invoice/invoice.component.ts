@@ -21,6 +21,7 @@ export class InvoiceComponent {
   @Input() productList: any[] = [];
   @Output() total: EventEmitter<number> = new EventEmitter<number>();
   @Output() opendButton: EventEmitter<boolean> = new EventEmitter<boolean>;
+  @Output() removeOneItem: EventEmitter<boolean> = new EventEmitter<boolean>;
   @Input() totalOrderOperation!: () => void;
   @Input() refreshList!: () => void;
   isOpen: boolean = false;
@@ -40,10 +41,16 @@ export class InvoiceComponent {
       this.totalOrderOperation()
     }
   }
+
   calcSubtotal() {
     const allTotal: number = this.productList.reduce((sum, item) => sum + (Number(item.price) * Number(item.quantity)), 0);
     this.total.emit(allTotal);
   };
+
+  removeProduct(id: any) {
+    this.removeOneItem.emit(id);
+
+  }
 
   openToggle() {
     this.isOpen = !this.isOpen;

@@ -63,6 +63,9 @@
 
 .customs ::ng-deep .p-inputgroup input {
   width: 100% !important;
+  border: 1px solid var(--p-select-border-color) !important;
+  padding-left: 12px !important;
+  border-radius: 0 4px 4px 0 !important;
 }
 
 .customs ::ng-deep .p-select-clear-icon {
@@ -170,7 +173,7 @@
     margin-top: 16px;
   }
 
-   .totalCard {
+  .totalCard {
     height: auto;
     padding-bottom: 12px;
   }
